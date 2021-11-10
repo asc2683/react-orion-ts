@@ -1,0 +1,4 @@
+.joke-list-container > ul {
+  list-style: none;
+  padding-left: 0;
+}

@@ -1,0 +1,35 @@
+li.joke-item-container {
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
+li.joke-item-container button {
+  border: unset;
+  background: unset;
+}
+
+li.joke-item-container .joke-item-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 6rem;
+}
+
+.joke-item-body > div {
+  flex: 1;
+}
+
+.joke-item-body div:first-of-type {
+  font-style: italic;
+}
+
+.joke-item-body div:nth-child(2) {
+  text-align: right;
+  font-weight: 600;
+}
+
+.joke-item-body div:last-of-type {
+  display: flex;
+  align-items: flex-end;
+}

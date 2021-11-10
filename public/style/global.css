@@ -1,0 +1,26 @@
+/* define all global css here */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+html {
+  font-size: 16px;
+}
+
+body {
+  color: red;
+  font-family: 'Open Sans', sans-serif;
+  color: #293E40;
+  background-color: #EDF5F7;
+}
+
+.spinner {
+    animation: spin infinite 5s linear;
+  }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
