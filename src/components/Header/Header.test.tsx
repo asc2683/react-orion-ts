@@ -12,5 +12,5 @@ test('should render Header component with title', () => {
   render(<Header value={value} title={title} />);
   const headerElement = screen.getByTestId('header');
   expect(headerElement).toBeInTheDocument();
-  expect(headerElement).toHaveTextContent('Jokes List');
+  expect(headerElement).toHaveTextContent(title);
 })

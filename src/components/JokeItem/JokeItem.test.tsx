@@ -15,11 +15,11 @@ test('should render JokeItem component unliked', () => {
   }
 
   render(<JokeItem joke={joke} />);
-  const jokeItemElement = screen.getByTestId('jokeItem-8');
+  const jokeItemElement = screen.getByTestId(`jokeItem-${joke.id}`);
   expect(jokeItemElement).toBeInTheDocument();
-  expect(jokeItemElement).toHaveTextContent('What do you get when you cross a bee and a sheep?');
-  expect(jokeItemElement).toHaveTextContent('A bah-humbug.');
-  expect(jokeItemElement).toContainHTML('M14.6 8H21a2');
+  expect(jokeItemElement).toHaveTextContent(joke.setup);
+  expect(jokeItemElement).toHaveTextContent(joke.punchline);
+  expect(jokeItemElement).toContainHTML('M14.6 8H21a2'); // svg for icon
 })
 
 test('should render JokeItem component liked', () => {
@@ -32,10 +32,10 @@ test('should render JokeItem component liked', () => {
   }
 
   render(<JokeItem joke={joke} />);
-  const jokeItemElement = screen.getByTestId('jokeItem-9');
+  const jokeItemElement = screen.getByTestId(`jokeItem-${joke.id}`);
   expect(jokeItemElement).toBeInTheDocument();
-  expect(jokeItemElement).toHaveTextContent('Why do programmers always mix up Halloween and Christmas?');
-  expect(jokeItemElement).toHaveTextContent('Because Oct 31 == Dec 25.');
-  expect(jokeItemElement).toContainHTML('M2 9h3v12H2a1');
+  expect(jokeItemElement).toHaveTextContent(joke.setup);
+  expect(jokeItemElement).toHaveTextContent(joke.punchline);
+  expect(jokeItemElement).toContainHTML('M2 9h3v12H2a1'); // svg for icon
 })
 
