@@ -33,9 +33,10 @@ const JokeContainer = () => {
       const resp = await axios.get('/10');
 
       const data = resp.data.map((item: Joke) => {
-        const obj = item;
-        obj.isLiked = false;
-        return obj;
+       return {
+         ...item,
+         isLiked: false,
+       }
       });
 
       setJoke(data);
