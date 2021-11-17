@@ -4,7 +4,7 @@ import './Header.css';
 
 interface Props {
   value: boolean;
-  title?: string;
+  title: string;
   handleToggle: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

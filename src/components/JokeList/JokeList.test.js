@@ -1,9 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import JokeList from './JokeList';
 
-afterEach(() => {
-  cleanup();
-});
+afterEach(cleanup);
 
 test('should render JokeList component', () => {
   const value = false;
@@ -14,4 +12,6 @@ test('should render JokeList component', () => {
   render(<JokeList value={value} jokes={jokes} />);
   const jokeListElement = screen.getByTestId('jokeList');
   expect(jokeListElement).toBeInTheDocument();
+  expect(jokeListElement).toHaveTextContent(jokes[0].punchline);
+  expect(jokeListElement).toHaveTextContent(jokes[0].setup);  
 })
