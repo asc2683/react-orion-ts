@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { FiThumbsUp } from 'react-icons/fi';
 import './Switch.css';
 
 interface Props {
   defaultChecked: boolean;
+  // eslint-disable-next-line no-unused-vars
   handleToggle: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

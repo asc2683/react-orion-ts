@@ -6,12 +6,22 @@ afterEach(cleanup);
 test('should render JokeList component', () => {
   const value = false;
   const jokes = [
-    {"id":241,"type":"general","setup":"What do you get when you cross a bee and a sheep?","punchline":"A bah-humbug."},
-    {"id":23,"type":"programming","setup":"Why do programmers always mix up Halloween and Christmas?"}];
+    {
+      id: 241,
+      type: 'general',
+      setup: 'What do you get when you cross a bee and a sheep?',
+      punchline: 'A bah-humbug.',
+    },
+    {
+      id: 23,
+      type: 'programming',
+      setup: 'Why do programmers always mix up Halloween and Christmas?',
+    },
+  ];
 
   render(<JokeList value={value} jokes={jokes} />);
   const jokeListElement = screen.getByTestId('jokeList');
   expect(jokeListElement).toBeInTheDocument();
   expect(jokeListElement).toHaveTextContent(jokes[0].punchline);
-  expect(jokeListElement).toHaveTextContent(jokes[0].setup);  
-})
+  expect(jokeListElement).toHaveTextContent(jokes[0].setup);
+});

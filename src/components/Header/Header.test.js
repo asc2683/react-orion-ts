@@ -1,22 +1,22 @@
-import { render, screen, cleanup } from "@testing-library/react";
-import renderer from "react-test-renderer";
-import Header from "./Header";
+import { render, screen, cleanup } from '@testing-library/react';
+import renderer from 'react-test-renderer';
+import Header from './Header';
 
 afterEach(cleanup);
 
-test("should render Header component with title", () => {
+test('should render Header component with title', () => {
   const value = false;
-  const title = "Jokes List";
+  const title = 'Jokes List';
 
   render(<Header value={value} title={title} />);
-  const headerElement = screen.getByTestId("header");
+  const headerElement = screen.getByTestId('header');
   expect(headerElement).toBeInTheDocument();
   expect(headerElement).toHaveTextContent(title);
 });
 
-test("component matches snapshot", () => {
+test('component matches snapshot', () => {
   const value = false;
-  const title = "Jokes List";
+  const title = 'Jokes List';
   const tree = renderer.create(<Header value={value} title={title} />).toJSON();
   expect(tree).toMatchInlineSnapshot(`
     <div

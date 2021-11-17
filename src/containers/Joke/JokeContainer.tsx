@@ -6,11 +6,11 @@ import JokeList from '../../components/JokeList/JokeList';
 import './JokeContainer.css';
 
 interface Joke {
-  id: number,
-  type: string,
-  setup: string,
-  punchline: string,
-  isLiked: boolean
+  id: number;
+  type: string;
+  setup: string;
+  punchline: string;
+  isLiked: boolean;
 }
 
 const JokeContainer = () => {
@@ -21,6 +21,7 @@ const JokeContainer = () => {
   const setIsFavorite = (jokeId: number) => {
     const newJokesArr = jokes.map((joke) => {
       if (jokeId === joke.id) {
+        // eslint-disable-next-line no-param-reassign
         joke.isLiked = !joke.isLiked;
       }
       return joke;
@@ -38,17 +39,15 @@ const JokeContainer = () => {
       try {
         setLoading(true);
         const resp = await axios.get('/10');
-        const data = resp.data.map((item: Joke) => {
-          return {
-            ...item,
-            isLiked: false,
-          }
-        });
+        const data = resp.data.map((item: Joke) => ({
+          ...item,
+          isLiked: false,
+        }));
 
         setJoke(data);
         setLoading(false);
       } catch (err) {
-        return [];
+        console.log(err);
       }
     };
 
@@ -57,12 +56,9 @@ const JokeContainer = () => {
 
   return (
     <section data-testid="jokeContainer" className="joke-container">
-      <Header 
-        value={value}
-        title="Jokes List" 
-        handleToggle={handleToggle} />
+      <Header value={value} title="Jokes List" handleToggle={handleToggle} />
       <div>
-        { isLoading ? (
+        {isLoading ? (
           <div data-testid="loading">
             <FaSpinner className="spinner" />
             Loading data...

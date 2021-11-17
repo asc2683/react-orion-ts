@@ -8,4 +8,4 @@ test('should render Switch component', () => {
   render(<Switch defaultChecked={defaultChecked} />);
   const switchElement = screen.getByTestId('switch');
   expect(switchElement).toBeInTheDocument();
-})
+});

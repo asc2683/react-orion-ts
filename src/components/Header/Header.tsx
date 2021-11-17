@@ -5,10 +5,11 @@ import './Header.css';
 interface Props {
   value: boolean;
   title: string;
+  // eslint-disable-next-line no-unused-vars
   handleToggle: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Header = ({ value, handleToggle, title }: Props): JSX.Element => (
+const Header = ({ value, handleToggle, title }: Props) => (
   <div data-testid="header" className="header-container">
     <div>
       <h1>{title}</h1>
