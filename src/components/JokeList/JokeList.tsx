@@ -12,13 +12,13 @@ interface Joke {
 
 interface Props {
   jokes: Joke[];
-  isFavorite: (jokeId: number) => void;
+  setIsFavorite: (jokeId: number) => void;
   value: boolean;
 }
 
 const JokeList = ({
   jokes,
-  isFavorite,
+  setIsFavorite,
   value,
 }: Props) => {
   const jokesArr = (value) ? jokes.filter((joke) => joke.isLiked === true) : jokes;
@@ -27,7 +27,7 @@ const JokeList = ({
     <div data-testid="jokeList" className="joke-list-container">
       <ul>
         { jokesArr.map((joke) => (
-          <JokeItem key={joke.id} joke={joke} isFavorite={isFavorite} />
+          <JokeItem key={joke.id} joke={joke} setIsFavorite={setIsFavorite} />
         ))}
       </ul>
     </div>

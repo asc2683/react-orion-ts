@@ -1,9 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import Switch from './Switch';
 
-afterEach(() => {
-  cleanup();
-});
+afterEach(cleanup);
 
 test('should render Switch component', () => {
   const defaultChecked = false;

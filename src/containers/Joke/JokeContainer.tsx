@@ -16,11 +16,16 @@ interface Joke {
 const JokeContainer = () => {
   const [jokes, setJoke] = useState<Joke[]>([]);
   const [value, setValue] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState(false);
 
-  const isFavorite = (jokeId: number) => {
-    const newJokesArr = [...jokes];
-    const objIndex = newJokesArr.findIndex((obj) => obj.id === jokeId);
-    newJokesArr[objIndex].isLiked = !newJokesArr[objIndex].isLiked;
+  const setIsFavorite = (jokeId: number) => {
+    const newJokesArr = jokes.map((joke) => {
+      if (jokeId === joke.id) {
+        joke.isLiked = !joke.isLiked;
+      }
+      return joke;
+    });
+
     setJoke(newJokesArr);
   };
 
@@ -30,16 +35,21 @@ const JokeContainer = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await axios.get('/10');
+      try {
+        setLoading(true);
+        const resp = await axios.get('/10');
+        const data = resp.data.map((item: Joke) => {
+          return {
+            ...item,
+            isLiked: false,
+          }
+        });
 
-      const data = resp.data.map((item: Joke) => {
-       return {
-         ...item,
-         isLiked: false,
-       }
-      });
-
-      setJoke(data);
+        setJoke(data);
+        setLoading(false);
+      } catch (err) {
+        return [];
+      }
     };
 
     fetchData();
@@ -52,17 +62,20 @@ const JokeContainer = () => {
         title="Jokes List" 
         handleToggle={handleToggle} />
       <div>
-        { !jokes.length
-          && (
-            <div>
-              <FaSpinner className="spinner" />
-            </div>
-          )}
-        <JokeList
-          jokes={jokes}
-          isFavorite={isFavorite}
-          value={value}
-        />
+        { isLoading ? (
+          <div data-testid="loading">
+            <FaSpinner className="spinner" />
+            Loading data...
+          </div>
+        ) : (
+          <div data-testid="resolved">
+            <JokeList
+              jokes={jokes}
+              setIsFavorite={setIsFavorite}
+              value={value}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

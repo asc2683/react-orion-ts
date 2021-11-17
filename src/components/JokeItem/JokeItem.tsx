@@ -12,19 +12,23 @@ interface Joke {
 
 interface Props {
   joke: Joke;
-  isFavorite: (jokeId: number) => void;
+  setIsFavorite: (jokeId: number) => void;
 }
 
-const JokeItem = ({ joke, isFavorite }: Props) => (
+const JokeItem = ({ joke, setIsFavorite }: Props) => (
   <>
-    <li data-testid={`jokeItem-${joke.id}`} className="joke-item-container" key={joke.id}>
+    <li 
+      data-testid={`jokeItem-${joke.id}`} 
+      className="joke-item-container" 
+      key={joke.id}
+    >
       <div className="joke-item-body">
         <div>{joke.setup}</div>
         <div>{joke.punchline}</div>
         <div>
           <button
             type="button"
-            onClick={() => isFavorite(joke.id)}
+            onClick={() => setIsFavorite(joke.id)}
           >
             { !joke.isLiked ? <RiThumbUpLine /> : <RiThumbUpFill /> }
           </button>
